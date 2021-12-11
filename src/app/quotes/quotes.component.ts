@@ -14,7 +14,8 @@ export class QuotesComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private httpService: HttpService,
-              ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getQuotes();
@@ -22,6 +23,10 @@ export class QuotesComponent implements OnInit {
       this.categoryName = params['category'];
       this.getQuotes();
     });
+
+    this.httpService.quotesChange.subscribe(() => {
+      this.getQuotes();
+    })
   }
 
 
@@ -37,5 +42,9 @@ export class QuotesComponent implements OnInit {
         this.quotes = quotes;
       });
     }
+  }
+
+  deleteQuote(index: number) {
+    this.httpService.deleteQuote(this.quotes![index]);
   }
 }

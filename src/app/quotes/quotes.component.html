@@ -1,10 +1,10 @@
-<div class="card border-dark border-4 flex-row" *ngFor="let quote of quotes">
+<div class="card border-dark border-4 flex-row" *ngFor="let quote of quotes; let i = index">
   <div class="col card-body">
     <p class="card-text">{{ quote.text }}</p>
     <p class="card-text">— {{ quote.author }}</p>
   </div>
   <div class="col-3 align-items-center pt-3 pr-0">
-    <button type="button" class="btn btn-success mr-1">edit</button>
-    <button type="button" class="btn btn-danger">X</button>
+    <a [routerLink]="['/quotes/',quote.id,'edit']" class="mr-2">Edit</a>
+    <button type="button" class="btn btn-danger" (click)="deleteQuote(i)">X</button>
   </div>
 </div>
