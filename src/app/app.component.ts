@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'collectionQuotes';
+  categories = [
+    {name:'Star Wars', value: 'star-wars'},
+    {name:'Famous people', value: 'famous-people'},
+    {name:'Saying', value: 'saying'},
+    {name:'Humour', value: 'humour'},
+    {name:'Motivational', value: 'motivational'},
+  ];
+
 }
