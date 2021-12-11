@@ -13,6 +13,7 @@ export class QuotesComponent implements OnInit {
   quotes: Quote[] | undefined = undefined;
   categoryName = '';
   title = '';
+  modalOpen = false;
 
   constructor(private route: ActivatedRoute,
               private httpService: HttpService,
@@ -37,7 +38,6 @@ export class QuotesComponent implements OnInit {
     })
   }
 
-
   getQuotes() {
     if (this.categoryName) {
       this.httpService.urlInit();
@@ -54,5 +54,15 @@ export class QuotesComponent implements OnInit {
 
   deleteQuote(index: number) {
     this.httpService.deleteQuote(this.quotes![index]);
+    this.modalOpen = false;
+  }
+
+
+  openCheckOutModal() {
+    this.modalOpen = true;
+  }
+
+  closeCheckoutModal() {
+    this.modalOpen = false;
   }
 }
