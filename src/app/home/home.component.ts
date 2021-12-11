@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../../shared/categories.service';
+import { Category } from '../../shared/category.model';
 
 @Component({
   selector: 'app-home',
@@ -6,16 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  categories = [
-    {name:'Star Wars', value: 'star-wars'},
-    {name:'Famous people', value: 'famous-people'},
-    {name:'Saying', value: 'saying'},
-    {name:'Humour', value: 'humour'},
-    {name:'Motivational', value: 'motivational'},
-  ];
-  constructor() { }
+  categories: Category[] = [];
+
+  constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit(): void {
+    this.categories = this.categoriesService.getCategories();
   }
 
 }

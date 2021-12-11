@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpService } from '../../shared/http.service';
 import { Quote } from '../../shared/quote.model';
+import { CategoriesService } from '../../shared/categories.service';
 
 @Component({
   selector: 'app-quotes',
@@ -11,16 +12,23 @@ import { Quote } from '../../shared/quote.model';
 export class QuotesComponent implements OnInit {
   quotes: Quote[] | undefined = undefined;
   categoryName = '';
+  title = '';
 
   constructor(private route: ActivatedRoute,
               private httpService: HttpService,
-  ) {
-  }
+              private categoriesService: CategoriesService,
+  ) {}
 
   ngOnInit(): void {
     this.getQuotes();
+    this.title = 'All';
+
     this.route.params.subscribe((params: Params) => {
       this.categoryName = params['category'];
+
+      const category = this.categoriesService.getCategoryName(this.categoryName);
+      if(category) this.title = category.name;
+
       this.getQuotes();
     });
 

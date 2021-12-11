@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpService } from '../shared/http.service';
 import { EditAddComponent } from './edit-add/edit-add.component';
 import { NotFoundComponent } from './not-found.component';
+import { CategoriesService } from '../shared/categories.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { NotFoundComponent } from './not-found.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpService],
+  providers: [HttpService, CategoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

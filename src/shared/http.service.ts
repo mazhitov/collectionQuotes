@@ -8,8 +8,9 @@ export class HttpService {
   url = '';
   quotesChange = new EventEmitter();
 
-  constructor(private http: HttpClient) {
-  }
+
+
+  constructor(private http: HttpClient) {}
 
   getQuotes() {
     return this.http.get<{ [id: string]: Quote }>(this.url)
