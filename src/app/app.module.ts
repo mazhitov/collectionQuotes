@@ -9,13 +9,17 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HttpService } from '../shared/http.service';
+import { EditAddComponent } from './edit-add/edit-add.component';
+import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     QuotesComponent,
-    HomeComponent
+    HomeComponent,
+    EditAddComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
