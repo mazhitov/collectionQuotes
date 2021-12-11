@@ -12,6 +12,7 @@ import { HttpService } from '../shared/http.service';
 import { EditAddComponent } from './edit-add/edit-add.component';
 import { NotFoundComponent } from './not-found.component';
 import { CategoriesService } from '../shared/categories.service';
+import { ModalComponent } from './ui/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CategoriesService } from '../shared/categories.service';
     QuotesComponent,
     HomeComponent,
     EditAddComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

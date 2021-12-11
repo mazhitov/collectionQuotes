@@ -1,7 +1,7 @@
 <h3 class="card-title">{{ title }}</h3>
 <div class="card border-dark border-4 flex-row mb-3" *ngFor="let quote of quotes; let i = index">
   <div class="col card-body">
-    <p class="card-text">{{ quote.text }}</p>
+    <p class="card-text">&#8220; {{ quote.text }} &#8221;</p>
     <p class="card-text">— {{ quote.author }}</p>
   </div>
   <div class="col-3 align-items-center pt-3 pr-0">

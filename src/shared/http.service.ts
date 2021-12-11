@@ -9,8 +9,8 @@ export class HttpService {
   quotesChange = new EventEmitter();
 
 
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getQuotes() {
     return this.http.get<{ [id: string]: Quote }>(this.url)
@@ -28,8 +28,24 @@ export class HttpService {
     return this.getQuotes();
   }
 
+  getQuote(id: string) {
+    return this.http.get<Quote>('https://project-server-788da-default-rtdb.firebaseio.com/quotes/' + id + '.json');
+  }
+
   urlInit() {
     this.url = 'https://project-server-788da-default-rtdb.firebaseio.com/quotes.json';
+  }
+
+  addQuote(quote: {}) {
+    this.http.post('https://project-server-788da-default-rtdb.firebaseio.com/quotes.json', quote).subscribe(() => {
+      this.quotesChange.emit();
+    })
+  }
+
+  editQuote(id:string,quote:{}) {
+    this.http.put('https://project-server-788da-default-rtdb.firebaseio.com/quotes/' + id + '.json', quote).subscribe(() => {
+      this.quotesChange.emit();
+    })
   }
 
   deleteQuote(quote: Quote) {
