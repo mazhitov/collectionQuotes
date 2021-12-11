@@ -1,0 +1,11 @@
+<div class="row p-4">
+  <div class="col">
+    <ul>
+      <li><a routerLink="/">All</a></li>
+      <li *ngFor="let category of categories"><a [routerLink]="'/quotes/'+category.value">{{ category.name }}</a></li>
+    </ul>
+  </div>
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
+</div>
